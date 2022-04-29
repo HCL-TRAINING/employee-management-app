@@ -2,20 +2,24 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import {
   decrement,
+  // @ts-ignore
   increment,
   incrementByAmount,
   incrementAsync,
   incrementIfOdd,
   selectCount,
 } from './counterSlice';
+// @ts-ignore
 import styles from './Counter.module.css';
 
 export function Counter() {
   const count = useSelector(selectCount);
+  console.log('count', count);
   const dispatch = useDispatch();
   const [incrementAmount, setIncrementAmount] = useState('2');
 
   const incrementValue = Number(incrementAmount) || 0;
+  console.log('inc val', incrementValue);
 
   return (
     <div>
@@ -51,12 +55,14 @@ export function Counter() {
         </button>
         <button
           className={styles.asyncButton}
+          // @ts-ignore
           onClick={() => dispatch(incrementAsync(incrementValue))}
         >
           Add Async
         </button>
         <button
           className={styles.button}
+          // @ts-ignore
           onClick={() => dispatch(incrementIfOdd(incrementValue))}
         >
           Add If Odd
